@@ -1,5 +1,5 @@
 <template>
-  <el-button @click="toggleDark()">首页</el-button>
+  <button @click="toggleDark()" class="i-carbon-sun dark:i-carbon-moon"/>
 </template>
 
 <script setup>
