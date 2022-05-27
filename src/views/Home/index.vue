@@ -1,7 +1,9 @@
 <template>
-  <el-button>首页</el-button>
+  <el-button @click="toggleDark()">首页</el-button>
 </template>
 
-<script setup></script>
+<script setup>
+import { toggleDark } from '@/composables'
+</script>
 
 <style></style>
