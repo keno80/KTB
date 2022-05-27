@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="left">
-      <button class="i-ep-fold svg"></button>
+      <button class="i-ep-fold svg" @click="toggleExpand()" />
     </div>
     <div class="right">
       <button
@@ -13,7 +13,18 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 import { toggleDark } from '@/composables'
+
+const store = useStore()
+const expand = computed(() => store.state.app.sideExpand)
+
+const toggleExpand = () => {
+  expand.value
+    ? store.commit('app/toggleSideExpand', false)
+    : store.commit('app/toggleSideExpand', true)
+}
 </script>
 
 <style lang="scss" scoped>

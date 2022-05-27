@@ -1,6 +1,7 @@
 <template>
   <el-menu
     default-active="2"
+    :collapse="data.isCollapse"
     class="el-menu-vertical-demo"
     @open="handleOpen"
     @close="handleClose"
@@ -37,6 +38,16 @@
   </el-menu>
 </template>
 
-<script vue></script>
+<script setup>
+import { reactive, computed } from 'vue'
+import { useStore } from 'vuex'
+
+const store = useStore()
+
+const data = reactive({
+  isCollapse: computed(() => store.state.app.sideExpand),
+})
+
+</script>
 
 <style></style>
