@@ -1,11 +1,11 @@
 <template>
   <div class="header">
     <div class="left">
-      <button
+      <!-- <button
         :class="[isCollapse ? 'i-ep:expand' : 'i-ep:fold']"
         class="svg"
         @click="toggleSideCollapse()"
-      />
+      /> -->
     </div>
     <div class="right">
       <button
@@ -34,7 +34,7 @@ const toggleSideCollapse = () => {
 <style lang="scss" scoped>
 .header {
   height: 50px;
-  border-bottom: 1px solid var(--el-menu-border-color);
+  // border-bottom: 1px solid var(--el-menu-border-color);
   display: flex;
   align-items: center;
   padding: 0 20px;

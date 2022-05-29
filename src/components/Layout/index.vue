@@ -1,9 +1,9 @@
 <template>
   <div class="layout">
-    <div class="left">
+    <!-- <div class="left">
       <div class="logo" />
       <Sider style="height: calc(100% - 50px)" />
-    </div>
+    </div> -->
     <div class="right">
       <Header />
       <div class="content">
@@ -40,6 +40,7 @@ import Header from './Header/index.vue'
     
     .content {
       padding: 20px;
+      height: calc(100% - 100px);
     }
   }
 }
