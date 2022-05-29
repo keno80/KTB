@@ -1,16 +1,15 @@
 const state = {
-  sideExpand: false,
+  isCollapse: false,
 }
 
 const mutations = {
-  toggleSideExpand(state, status) {
-    console.log(status);
-    state.sideExpand = status
+  toggleSideCollapse(state, status) {
+    state.isCollapse = status
   },
 }
 
 const actions = {
-  toggleSideExpand: ({ commit }, status) => commit('toggleSideExpand', status),
+  toggleSideCollapse: ({ commit }, status) => commit('toggleSideCollapse', status),
 }
 
 export default {

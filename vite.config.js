@@ -11,7 +11,6 @@ import {
   presetAttributify,
   transformerVariantGroup,
 } from 'unocss'
-import UnocssIcons from '@unocss/preset-icons'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -24,15 +23,9 @@ export default defineConfig({
         presetAttributify(),
         presetUno(),
         presetIcons({
-          scale: 1.2,
+          scale: 1.5,
           warn: true,
         }),
-        // UnocssIcons({
-        //   prefix: 'i-',
-        //   extraProperties: {
-        //     display: 'inline-block',
-        //   },
-        // }),
       ],
       transformers: [transformerVariantGroup()],
     }),

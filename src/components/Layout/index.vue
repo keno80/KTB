@@ -21,23 +21,22 @@ import Header from './Header/index.vue'
 <style lang="scss" scoped>
 .layout {
   height: 100%;
+  display: flex;
   .left {
-    width: 210px;
     height: 100%;
-    float: left;
+    flex: 1;
 
     .logo {
       height: 50px;
       background-color: var(--c-bg-color);
-      width: 209px;
       border-right: 1px solid var(--el-menu-border-color);
     }
   }
 
   .right {
-    width: calc(100% - 210px);
     height: 100%;
-    margin-left: 210px;
+    width: 100%;
+    flex: auto;
     
     .content {
       padding: 20px;
