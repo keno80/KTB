@@ -1,8 +1,9 @@
 <template>
   <el-menu
-    default-active="2"
+    :default-active="data.currentRoute"
     :collapse="data.isCollapse"
     class="el-menu-vertical"
+    :router="true"
   >
     <template v-for="item in data.allRoutes" :key="item.path">
       <SubItem :childRoutes="item" />
@@ -23,7 +24,9 @@ const router = useRouter()
 const data = reactive({
   isCollapse: computed(() => store.state.app.isCollapse),
   allRoutes: computed(() => router.options.routes),
+  currentRoute: computed(() => route.path),
 })
+
 </script>
 
 <style lang="scss" scoped>

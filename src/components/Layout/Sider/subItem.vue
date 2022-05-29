@@ -1,7 +1,7 @@
 <template>
   <template v-if="props.childRoutes.children.length === 1">
     <el-menu-item
-      index="1"
+      :index="item.path"
       v-for="item in props.childRoutes.children"
       :key="item.path"
     >
@@ -11,7 +11,7 @@
   </template>
 
   <template v-else>
-    <el-sub-menu index="1">
+    <el-sub-menu :index="props.childRoutes.path">
       <template #title>
         <div
           :class="props.childRoutes.meta.icon"
@@ -21,7 +21,7 @@
         <span>{{ props.childRoutes.meta.title }}</span>
       </template>
       <el-menu-item
-        index="1-1"
+        :index="item.path"
         v-for="item in props.childRoutes.children"
         :key="item.path"
       >
@@ -38,7 +38,9 @@ const props = defineProps({
     type: Object,
     default: () => {},
   },
+
 })
+  console.log(props.childRoutes);
 
 </script>
 

@@ -1,7 +1,11 @@
 <template>
   <div class="header">
     <div class="left">
-      <button class="i-ep-fold svg" @click="toggleSideCollapse()" />
+      <button
+        :class="[isCollapse ? 'i-ep:expand' : 'i-ep:fold']"
+        class="svg"
+        @click="toggleSideCollapse()"
+      />
     </div>
     <div class="right">
       <button
@@ -18,10 +22,10 @@ import { useStore } from 'vuex'
 import { toggleDark } from '@/composables'
 
 const store = useStore()
-const expand = computed(() => store.state.app.isCollapse)
+const isCollapse = computed(() => store.state.app.isCollapse)
 
 const toggleSideCollapse = () => {
-  expand.value
+  isCollapse.value
     ? store.commit('app/toggleSideCollapse', false)
     : store.commit('app/toggleSideCollapse', true)
 }
@@ -37,8 +41,6 @@ const toggleSideCollapse = () => {
   justify-content: space-between;
 
   .svg {
-    height: 1.5em;
-    width: 1.5em;
     cursor: pointer;
   }
 }
