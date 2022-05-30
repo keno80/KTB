@@ -17,14 +17,7 @@
         <div class="i-mdi:close inner-close" @click="handleClearWord()"></div>
       </div>
       <SearchEngine :list="data.searchEngineList" />
-      <div class="favorite">
-        <div class="favorite_item" v-for="item in 10" :key="item">
-          <div>
-            <div class="items"></div>
-            <div class="item_name">GIT</div>
-          </div>
-        </div>
-      </div>
+      <Favorite />
     </div>
   </div>
 </template>
@@ -34,6 +27,7 @@ import { reactive, onMounted, computed } from 'vue'
 import { timer } from '@/utils/tools'
 import { useStore } from 'vuex'
 import SearchEngine from './components/SearchEngine.vue'
+import Favorite from './components/Favorite.vue'
 
 const store = useStore()
 
@@ -119,52 +113,30 @@ onMounted(() => {
     input {
       width: calc(100% - 100px);
       height: 46px;
-      border: none;
+      border: 1px solid transparent;
       border-radius: 30px;
       padding-inline-start: 50px;
       padding-inline-end: 50px;
       font-size: 1.1rem;
       font-family: 'Google Sans English';
       background-color: var(--c-home-bg-color-2);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(5px);
       color: #fff;
 
       &:focus-visible {
         outline: none;
       }
+
+      &:hover {
+        box-shadow: inset 0px 0px 6px 0px var(--c-text-color),
+          0px 0px 6px 0 var(--c-text-color);
+        border: 1px solid var(--c-border-color-6);
+        transition: ease-in-out 0.2s;
+      }
     }
 
     ::-webkit-input-placeholder {
       color: var(--c-text-color);
-    }
-  }
-
-  .favorite {
-    background-color: var(--c-home-bg-color-2);
-    backdrop-filter: blur(10px);
-    margin-top: 30px;
-    border-radius: 14px;
-    padding: 10px;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    font-family: 'Google Sans English';
-
-    .favorite_item {
-      width: 130px;
-      margin: 10px 0;
-      border: 1px solid aquamarine;
-      display: flex;
-      justify-content: center;
-      text-align: center;
-
-      .items {
-        height: 50px;
-        width: 50px;
-        border-radius: 50%;
-        background-color: aquamarine;
-        margin-bottom: 10px;
-      }
     }
   }
 }

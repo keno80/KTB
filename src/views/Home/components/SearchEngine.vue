@@ -42,7 +42,7 @@ const chooseEngine = (name) => {
 
   .search_engine_item {
     background-color: var(--c-home-bg-color-2);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     padding: 10px 20px;
     border-radius: 30px;
     cursor: pointer;
@@ -56,6 +56,7 @@ const chooseEngine = (name) => {
       box-shadow: inset 0px 0px 6px 0px var(--c-text-color),
         0px 0px 6px 0 var(--c-text-color);
       border: 1px solid var(--c-border-color-6);
+      transition: ease-in-out .2s;
     }
 
     .engine-icon {
