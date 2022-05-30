@@ -3,7 +3,8 @@
     <div class="home_main">
       <div class="time">
         <p>
-          {{ data.time ? data.time.toLocaleString() : '00:00:00' }}
+          <!-- {{ data.time ? data.time.toLocaleString() : '00:00:00' }} -->
+          KTB Search Page
         </p>
       </div>
       <div class="search">
@@ -80,7 +81,7 @@ onMounted(() => {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 710px;
+    width: 800px;
     color: var(--c-text-color);
   }
 
@@ -89,9 +90,10 @@ onMounted(() => {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
 
     p {
-      font-size: 6rem;
+      font-size: 4.2rem;
       margin: 0;
     }
   }
@@ -140,7 +142,7 @@ onMounted(() => {
   .favorite {
     background-color: var(--c-home-bg-color-2);
     backdrop-filter: blur(10px);
-    margin-top: 20px;
+    margin-top: 30px;
     border-radius: 14px;
     padding: 10px;
     display: flex;
@@ -149,7 +151,7 @@ onMounted(() => {
     font-family: 'Google Sans English';
 
     .favorite_item {
-      width: 120px;
+      width: 130px;
       margin: 10px 0;
       border: 1px solid aquamarine;
       display: flex;

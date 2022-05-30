@@ -37,7 +37,7 @@ const chooseEngine = (name) => {
 .search_engine {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 30px;
   font-family: 'Google Sans English';
 
   .search_engine_item {
