@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
@@ -28,6 +28,7 @@ const props = defineProps({
 
 const chooseEngine = (item) => {
   store.dispatch('app/setSearchEngine', item)
+  store.dispatch('app/setSearchUrl')
 }
 </script>
 

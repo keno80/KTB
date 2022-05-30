@@ -8,7 +8,11 @@
       </div>
       <div class="search">
         <div class="i-mdi:magnify inner-search"></div>
-        <input placeholder="Search what you want" />
+        <input
+          placeholder="Search what you want"
+          @keyup.enter="handleSearch()"
+          v-model="data.searchWord"
+        />
       </div>
       <SearchEngine :list="data.searchEngineList" />
       <div class="favorite">
@@ -24,18 +28,33 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, onMounted, computed } from 'vue'
 import { timer } from '@/utils/tools'
-import SearchEngine from './components/searchEngine.vue'
+import { useStore } from 'vuex';
+import SearchEngine from './components/SearchEngine.vue'
+
+const store = useStore()
 
 const data = reactive({
   time: '',
+  searchWord: '',
   searchEngineList: ['Google', 'Github', 'Bing', 'StackOverflow', 'Baidu'],
+  searchUrl: computed(() => store.state.app.searchUrl)
 })
 
 setInterval(() => {
   data.time = timer()
 }, 1000)
+
+const handleSearch = () => {
+  if (data.searchWord) {
+    window.open(data.searchUrl + data.searchWord)
+  }
+}
+
+onMounted(() => {
+  store.dispatch('app/setSearchUrl')
+})
 
 // console.log(timer());
 </script>
