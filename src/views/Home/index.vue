@@ -13,6 +13,7 @@
           @keyup.enter="handleSearch()"
           v-model="data.searchWord"
         />
+        <div class="i-mdi:close inner-close" @click="handleClearWord()"></div>
       </div>
       <SearchEngine :list="data.searchEngineList" />
       <div class="favorite">
@@ -52,6 +53,10 @@ const handleSearch = () => {
   }
 }
 
+const handleClearWord = () => {
+  data.searchWord = ''
+}
+
 onMounted(() => {
   store.dispatch('app/setSearchUrl')
 })
@@ -88,7 +93,7 @@ onMounted(() => {
   .search {
     position: relative;
 
-    .inner-search {
+    .inner-search, .inner-close {
       position: absolute;
       color: rgb(69, 69, 69);
       height: 100%;
@@ -97,12 +102,19 @@ onMounted(() => {
       z-index: 1;
     }
 
+    .inner-close {
+      right: 0;
+      top: 0;
+      cursor: pointer;
+    }
+
     input {
-      width: calc(100% - 50px);
+      width: calc(100% - 100px);
       height: 42px;
       border: none;
       border-radius: 30px;
       padding-inline-start: 50px;
+      padding-inline-end: 50px;
       font-size: 1rem;
       font-family: 'Google Sans English';
       background-color: var(--c-home-bg-color-2);
