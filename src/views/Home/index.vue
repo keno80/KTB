@@ -31,7 +31,7 @@
 <script setup>
 import { reactive, onMounted, computed } from 'vue'
 import { timer } from '@/utils/tools'
-import { useStore } from 'vuex';
+import { useStore } from 'vuex'
 import SearchEngine from './components/SearchEngine.vue'
 
 const store = useStore()
@@ -39,8 +39,14 @@ const store = useStore()
 const data = reactive({
   time: '',
   searchWord: '',
-  searchEngineList: ['Google', 'Github', 'Bing', 'StackOverflow', 'Baidu'],
-  searchUrl: computed(() => store.state.app.searchUrl)
+  searchEngineList: [
+    { name: 'Google', icon: 'i-ant-design:google-outlined' },
+    { name: 'Github', icon: 'i-ant-design:github-outlined' },
+    { name: 'Bing', icon: 'i-cib:bing' },
+    { name: 'StackOverflow', icon: 'i-academicons:stackoverflow' },
+    { name: 'Baidu', icon: 'i-bxl:baidu' },
+  ],
+  searchUrl: computed(() => store.state.app.searchUrl),
 })
 
 setInterval(() => {
@@ -93,11 +99,11 @@ onMounted(() => {
   .search {
     position: relative;
 
-    .inner-search, .inner-close {
+    .inner-search,
+    .inner-close {
       position: absolute;
-      color: rgb(69, 69, 69);
       height: 100%;
-      width: 1.28em;
+      width: 1.4em;
       margin: 0 20px;
       z-index: 1;
     }
@@ -110,19 +116,24 @@ onMounted(() => {
 
     input {
       width: calc(100% - 100px);
-      height: 42px;
+      height: 46px;
       border: none;
       border-radius: 30px;
       padding-inline-start: 50px;
       padding-inline-end: 50px;
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-family: 'Google Sans English';
       background-color: var(--c-home-bg-color-2);
       backdrop-filter: blur(10px);
+      color: #fff;
 
       &:focus-visible {
         outline: none;
       }
+    }
+
+    ::-webkit-input-placeholder {
+      color: var(--c-text-color);
     }
   }
 
@@ -130,7 +141,7 @@ onMounted(() => {
     background-color: var(--c-home-bg-color-2);
     backdrop-filter: blur(10px);
     margin-top: 20px;
-    border-radius: 30px;
+    border-radius: 14px;
     padding: 10px;
     display: flex;
     justify-content: space-around;

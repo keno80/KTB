@@ -15,5 +15,7 @@ body,
 
 #app {
   background-image: url('./assets/images/w1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 </style>

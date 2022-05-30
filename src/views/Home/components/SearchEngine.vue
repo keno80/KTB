@@ -1,13 +1,14 @@
 <template>
   <div class="search_engine">
     <div
-    :class="[item === searchEngine ? 'active' : '']"
+      :class="[item.name === searchEngine ? 'active' : '']"
       class="search_engine_item"
       v-for="item in props.list"
-      :key="item"
-      @click="chooseEngine(item)"
+      :key="item.name"
+      @click="chooseEngine(item.name)"
     >
-      {{ item }}
+      <div :class="item.icon" class="engine-icon"></div>
+      <span>{{ item.name }}</span>
     </div>
   </div>
 </template>
@@ -22,12 +23,12 @@ const searchEngine = computed(() => store.state.app.searchEngine)
 const props = defineProps({
   list: {
     type: Array,
-    default: () => ['Google', 'Github', 'Bing', 'StackOverflow', 'Baidu'],
+    default: () => [],
   },
 })
 
-const chooseEngine = (item) => {
-  store.dispatch('app/setSearchEngine', item)
+const chooseEngine = (name) => {
+  store.dispatch('app/setSearchEngine', name)
   store.dispatch('app/setSearchUrl')
 }
 </script>
@@ -42,12 +43,26 @@ const chooseEngine = (item) => {
   .search_engine_item {
     background-color: var(--c-home-bg-color-2);
     backdrop-filter: blur(10px);
-    padding: 10px 30px;
+    padding: 10px 20px;
     border-radius: 30px;
     cursor: pointer;
     font-size: 1.05em;
     border: 1px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 
+    &:hover {
+      box-shadow: inset 0px 0px 6px 0px var(--c-text-color),
+        0px 0px 6px 0 var(--c-text-color);
+      border: 1px solid var(--c-border-color-6);
+    }
+
+    .engine-icon {
+      margin-right: 8px;
+      height: 1.2em;
+      width: 1.2em;
+    }
   }
 
   .active {
