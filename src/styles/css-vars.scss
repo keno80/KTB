@@ -1,7 +1,13 @@
 html {
-  --c-bg-color: #f9f9f9
+  --c-bg-color: #f9f9f9;
+  --c-text-color: #fff;
+  --c-border-color-6: rgba(255,255,255,.6);
+  --c-home-bg-color-2: rgba(255,255,255,.2)
 }
 
 html.dark {
-  --c-bg-color: #262729
+  --c-bg-color: #262729;
+  --c-text-color: #000;
+  --c-border-color-6: rgba(0,0,0,0.6);
+  --c-home-bg-color-2: rgba(0,0,0,.2)
 }
