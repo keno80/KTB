@@ -1,6 +1,6 @@
 <template>
   <div class="favorite">
-    <div class="favorite_item" v-for="item in 10" :key="item">
+    <div class="favorite_item" v-for="item in 8" :key="item">
       <div>
         <div class="items"></div>
         <div class="item_name">GIT</div>
@@ -15,25 +15,25 @@
 .favorite {
   // background-color: var(--c-home-bg-color-2);
   // backdrop-filter: blur(5px);
-  margin-top: 30px;
   border-radius: 14px;
   // padding: 10px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   font-family: 'Google Sans English';
+  width: 540px;
 
   .favorite_item {
     background-color: var(--c-home-bg-color-2);
     backdrop-filter: blur(5px);
     border-radius: 14px;
-    width: 132px;
-    margin: 10px 0;
+    width: 120px;
+    margin: 8px 0;
     border: 1px solid transparent;
     display: flex;
     justify-content: center;
     text-align: center;
-    padding: 20px 0;
+    padding: 10px 0;
     cursor: pointer;
 
     &:hover {

@@ -17,7 +17,12 @@
         <div class="i-mdi:close inner-close" @click="handleClearWord()"></div>
       </div>
       <SearchEngine :list="data.searchEngineList" />
-      <Favorite />
+      <div class="tool_box">
+        <Favorite />
+        <div class="player_weather">
+          <div v-for="item in 2" :key="item" class="item"></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -137,6 +142,26 @@ onMounted(() => {
 
     ::-webkit-input-placeholder {
       color: var(--c-text-color);
+    }
+  }
+  .tool_box {
+    display: flex;
+    margin-top: 30px;
+
+    .player_weather {
+      display: flex;
+      flex-wrap: wrap;
+      flex: 1;
+      margin-left: 20px;
+      .item {
+        background-color: var(--c-home-bg-color-2);
+        backdrop-filter: blur(5px);
+        height: 90px;
+        width: 100%;
+        padding: 10px 0;
+        margin: 10px 0;
+        border-radius: 14px;
+      }
     }
   }
 }
