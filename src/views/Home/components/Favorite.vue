@@ -1,15 +1,59 @@
 <template>
   <div class="favorite">
-    <div class="favorite_item" v-for="item in 8" :key="item">
+    <div
+      class="favorite_item"
+      v-for="(item, index) in favoriteList"
+      :key="index"
+      @click="handleClick(item.url)"
+    >
       <div>
-        <div class="items"></div>
-        <div class="item_name">GIT</div>
+        <div :class="item.icon" class="icon"></div>
+        <div class="item_name">{{ item.name }}</div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const favoriteList = [
+  {
+    name: 'Translate',
+    icon: 'i-mdi:google-translate',
+    url: 'https://translate.google.cn',
+  },
+  {
+    name: 'Bilibili',
+    icon: 'i-ri:bilibili-line',
+    url: 'https://www.bilibili.com/',
+  },
+  {
+    name: 'Github',
+    icon: 'i-ant-design:github-outlined',
+    url: 'https://github.com/',
+  },
+  {
+    name: 'MDN',
+    icon: 'i-simple-icons:mdnwebdocs',
+    url: 'https://developer.mozilla.org/zh-CN/',
+  },
+  { name: 'Vue', icon: 'i-mdi:vuejs', url: 'https://v3.cn.vuejs.org/' },
+  {
+    name: 'Element Plus',
+    icon: 'i-ep:element-plus',
+    url: 'https://element-plus.org/zh-CN/#/zh-CN',
+  },
+  {
+    name: 'Ant Design',
+    icon: 'i-ant-design:ant-design-outlined',
+    url: 'https://www.antdv.com/docs/vue/introduce-cn/',
+  },
+  { name: 'Vite', icon: 'i-simple-icons:vite', url: 'https://cn.vitejs.dev/' },
+]
+
+const handleClick = (url) => {
+  window.open(url)
+}
+</script>
 
 <style lang="scss" scoped>
 .favorite {
@@ -23,17 +67,24 @@
   font-family: 'Google Sans English';
   width: 540px;
 
+  &::after {
+    content: '';
+    width: 120px;
+  }
+
   .favorite_item {
     background-color: var(--c-home-bg-color-2);
     backdrop-filter: blur(5px);
     border-radius: 14px;
     width: 120px;
+    height: 90px;
     margin: 8px 0;
     border: 1px solid transparent;
     display: flex;
+    align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 10px 0;
+    padding: 12px 0 8px;
     cursor: pointer;
 
     &:hover {
@@ -43,12 +94,10 @@
       transition: ease-in-out 0.2s;
     }
 
-    .items {
-      height: 50px;
-      width: 50px;
-      border-radius: 50%;
-      background-color: #fff;
-      margin-bottom: 20px;
+    .icon {
+      width: 100%;
+      height: 2em;
+      margin-bottom: 10px;
     }
   }
 }
