@@ -20,7 +20,9 @@
       <div class="tool_box">
         <Favorite />
         <div class="player_weather">
-          <div v-for="item in 2" :key="item" class="item"></div>
+          <div class="item">
+            <Weather />
+          </div>
         </div>
       </div>
     </div>
@@ -33,6 +35,7 @@ import { timer } from '@/utils/tools'
 import { useStore } from 'vuex'
 import SearchEngine from './components/SearchEngine.vue'
 import Favorite from './components/Favorite.vue'
+import Weather from './components/Weather.vue'
 
 const store = useStore()
 
@@ -63,8 +66,19 @@ const handleClearWord = () => {
   data.searchWord = ''
 }
 
+const getPosition = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const location =
+        position.coords.longitude + ',' + position.coords.latitude
+      store.dispatch('app/setCurrentPosition', location)
+    })
+  }
+}
+
 onMounted(() => {
   store.dispatch('app/setSearchUrl')
+  getPosition()
 })
 
 // console.log(timer());

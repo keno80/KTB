@@ -4,6 +4,7 @@ const state = {
     ? localStorage.searchEngine
     : 'Google',
   searchUrl: '',
+  currentPosition: '',
 }
 
 const mutations = {
@@ -15,17 +16,26 @@ const mutations = {
     localStorage.searchEngine = engine
   },
   setSearchUrl(state) {
-   state.searchUrl =  state.searchEngine === 'Baidu'
-      ? 'https://www.baidu.com/s?wd='
-      : `https://www.${state.searchEngine.toLowerCase()}.com/search?q=`
+    state.searchUrl =
+      state.searchEngine === 'Baidu'
+        ? 'https://www.baidu.com/s?wd='
+        : `https://www.${state.searchEngine.toLowerCase()}.com/search?q=`
+  },
+  setCurrentPosition(state, position) {
+    state.currentPosition = position
   },
 }
 
 const actions = {
   toggleSideCollapse: ({ commit }, status) =>
     commit('toggleSideCollapse', status),
+
   setSearchEngine: ({ commit }, engine) => commit('setSearchEngine', engine),
+
   setSearchUrl: ({ commit }) => commit('setSearchUrl'),
+
+  setCurrentPosition: ({ commit }, position) =>
+    commit('setCurrentPosition', position),
 }
 
 export default {
