@@ -1,4 +1,6 @@
-<template></template>
+<template>
+<div class="i-weather-100"></div>
+</template>
 
 <script setup>
 import { reactive, onMounted } from 'vue'
@@ -9,9 +11,10 @@ import { computed } from 'vue'
 const store = useStore()
 
 const data = reactive({
-  weather: {},
-  city: '', //  地理位置信息
+  weather: computed(() => JSON.parse(sessionStorage.weather)),
+  city: computed(() => sessionStorage.city), //  地理位置信息
   location: computed(() => store.state.app.currentLocation), // 经纬度信息
+  refresh_now: false, // 立即刷新天气
 })
 
 const key = 'f769a71457c54fe686bd0c8abf9d0174'
@@ -21,9 +24,10 @@ const cityInfoUrl = `https://geoapi.qweather.com/v2/city/lookup?key=${key}&locat
 const getLocation = () => {
   axios.get(cityInfoUrl).then((res) => {
     if (res.data.code === '200') {
-      data.city = res.data.location[0].adm2 + res.data.location[0].name
+      sessionStorage.city = res.data.location[0].adm2 + res.data.location[0].name
       const location = res.data.location[0].lon + ',' + res.data.location[0].lat
       store.dispatch('app/setCurrentLocation', location)
+      data.refresh_now = true
       getWeather()
     }
   })
@@ -38,7 +42,8 @@ const getWeather = () => {
 
     axios.get(weatherUrl).then((res) => {
       if (res.data.code === '200') {
-        data.weather = res.data.now
+        sessionStorage.weather = JSON.stringify(res.data.now)
+        data.refresh_now = false
         // 获取/更新成功后记录当前的时间戳
         localStorage.update_time = Date.now()
       }
