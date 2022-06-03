@@ -4,7 +4,7 @@ const state = {
     ? localStorage.searchEngine
     : 'Google',
   searchUrl: '',
-  currentPosition: '',
+  currentLocation: localStorage.currentLocation ? localStorage.currentLocation : '',
 }
 
 const mutations = {
@@ -21,8 +21,9 @@ const mutations = {
         ? 'https://www.baidu.com/s?wd='
         : `https://www.${state.searchEngine.toLowerCase()}.com/search?q=`
   },
-  setCurrentPosition(state, position) {
-    state.currentPosition = position
+  setCurrentLocation(state, location) {
+    state.currentLocation = location
+    localStorage.currentLocation = location
   },
 }
 
@@ -34,8 +35,8 @@ const actions = {
 
   setSearchUrl: ({ commit }) => commit('setSearchUrl'),
 
-  setCurrentPosition: ({ commit }, position) =>
-    commit('setCurrentPosition', position),
+  setCurrentLocation: ({ commit }, location) =>
+    commit('setCurrentLocation', location),
 }
 
 export default {

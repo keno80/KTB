@@ -66,19 +66,8 @@ const handleClearWord = () => {
   data.searchWord = ''
 }
 
-const getPosition = () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const location =
-        position.coords.longitude + ',' + position.coords.latitude
-      store.dispatch('app/setCurrentPosition', location)
-    })
-  }
-}
-
 onMounted(() => {
   store.dispatch('app/setSearchUrl')
-  getPosition()
 })
 
 // console.log(timer());
