@@ -23,6 +23,9 @@
           <div class="item">
             <Weather />
           </div>
+          <div class="item">
+            <Player />
+          </div>
         </div>
       </div>
     </div>
@@ -36,6 +39,7 @@ import { useStore } from 'vuex'
 import SearchEngine from './components/SearchEngine.vue'
 import Favorite from './components/Favorite.vue'
 import Weather from './components/Weather.vue'
+import Player from './components/Player.vue'
 
 const store = useStore()
 
@@ -164,9 +168,6 @@ onMounted(() => {
         padding: 10px 0;
         margin: 10px 0;
         border-radius: 14px;
-        // display: flex;
-        // justify-content: center;
-        // align-items: center;
       }
     }
   }
