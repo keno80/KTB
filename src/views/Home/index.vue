@@ -164,6 +164,9 @@ onMounted(() => {
         padding: 10px 0;
         margin: 10px 0;
         border-radius: 14px;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
       }
     }
   }

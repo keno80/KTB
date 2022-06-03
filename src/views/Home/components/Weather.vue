@@ -1,5 +1,31 @@
 <template>
-<div class="i-weather-100"></div>
+  <!-- <div class="position">
+    <div class="i-mdi:map-marker"></div>
+    <span>{{ data.city }}</span>
+  </div> -->
+  <div class="weather">
+    <div :class="'i-weather-' + data.weather.icon" class="icon"></div>
+    <div class="weather_info">
+      <p class="temp">{{ data.weather.temp }}°</p>
+      <p class="text">{{ data.weather.text }}</p>
+    </div>
+  </div>
+  <div class="misc">
+    <div class="misc_style">
+      <div class="misc_item">
+        <p>{{ data.weather.windScale }}</p>
+        <p>{{ data.weather.windDir }}</p>
+      </div>
+      <div class="misc_item">
+        <p>{{ data.weather.feelsLike }}°</p>
+        <p>体感温度</p>
+      </div>
+      <div class="misc_item">
+        <p>{{ data.weather.precip }}mm</p>
+        <p>降水量</p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -24,7 +50,7 @@ const cityInfoUrl = `https://geoapi.qweather.com/v2/city/lookup?key=${key}&locat
 const getLocation = () => {
   axios.get(cityInfoUrl).then((res) => {
     if (res.data.code === '200') {
-      sessionStorage.city = res.data.location[0].adm2 + res.data.location[0].name
+      sessionStorage.city = res.data.location[0].adm2
       const location = res.data.location[0].lon + ',' + res.data.location[0].lat
       store.dispatch('app/setCurrentLocation', location)
       data.refresh_now = true
@@ -54,7 +80,56 @@ const getWeather = () => {
 onMounted(() => {
   // 判断是否有地理位置信息
   data.location !== '' ? getWeather() : getLocation()
+  console.log(JSON.parse(sessionStorage.weather))
 })
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.weather {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Google Sans English';
+  margin-bottom: 10px;
+
+  .icon {
+    width: 2em;
+    height: 2em;
+    margin-right: 10px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .temp {
+    font-size: 1em;
+  }
+
+  .text {
+    font-size: 0.8em;
+  }
+}
+
+.misc {
+  font-family: 'Google Sans English';
+  display: flex;
+  justify-content: center;
+
+  .misc_style {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    width: 92%;
+    text-align: center;
+    padding: 2px 0;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9em;
+  }
+}
+</style>
