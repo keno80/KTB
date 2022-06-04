@@ -4,7 +4,7 @@
     <span>{{ data.city }}</span>
   </div> -->
   <div class="weather">
-    <div :class="'i-weather-' + data.weather.icon" class="icon"></div>
+    <div :class="data.weather.icon" class="icon"></div>
     <div class="weather_info">
       <p class="temp">{{ data.weather.temp }}°</p>
       <p class="text">{{ data.weather.text }}</p>
@@ -37,8 +37,10 @@ import { computed } from 'vue'
 const store = useStore()
 
 const data = reactive({
-  weather: computed(() => JSON.parse(sessionStorage.weather)),
-  city: computed(() => sessionStorage.city), //  地理位置信息
+  weather: sessionStorage.weather
+    ? computed(() => JSON.parse(sessionStorage.weather))
+    : {},
+  city: sessionStorage.city ? computed(() => sessionStorage.city) : '', //  地理位置信息
   location: computed(() => store.state.app.currentLocation), // 经纬度信息
   refresh_now: false, // 立即刷新天气
 })
@@ -68,7 +70,9 @@ const getWeather = () => {
 
     axios.get(weatherUrl).then((res) => {
       if (res.data.code === '200') {
+        res.data.now.icon = `i-weather-${res.data.now.icon}`
         sessionStorage.weather = JSON.stringify(res.data.now)
+        data.weather = res.data.now
         data.refresh_now = false
         // 获取/更新成功后记录当前的时间戳
         localStorage.update_time = Date.now()
@@ -80,7 +84,6 @@ const getWeather = () => {
 onMounted(() => {
   // 判断是否有地理位置信息
   data.location !== '' ? getWeather() : getLocation()
-  console.log(JSON.parse(sessionStorage.weather))
 })
 </script>
 

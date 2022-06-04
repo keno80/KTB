@@ -12,12 +12,14 @@ import {
   transformerVariantGroup,
 } from 'unocss'
 
-import {
-  importDirectory,
-  parseColors,
-  runSVGO,
-  deOptimisePaths,
-} from '@iconify/tools'
+// import {
+//   importDirectory,
+//   parseColors,
+//   runSVGO,
+//   deOptimisePaths,
+// } from '@iconify/tools'
+
+import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -33,17 +35,19 @@ export default defineConfig({
           scale: 1.5,
           warn: true,
           collections: {
-            weather: async () => {
-              // 加载icon
-              const iconSet = await importDirectory('src/assets/icons/weather')
-              await iconSet.forEach(async (name) => {
-                const svg = iconSet.toSVG(name)
-                await runSVGO(svg)
-                await deOptimisePaths(svg)
-                iconSet.fromSVG(name, svg)
-              })
-              return iconSet.export()
-            },
+            // weather: async () => {
+            //   // 加载icon
+            //   const iconSet = await importDirectory('src/assets/icons/weather')
+            //   await iconSet.forEach(async (name) => {
+            //     const svg = iconSet.toSVG(name)
+            //     await runSVGO(svg)
+            //     await deOptimisePaths(svg)
+            //     iconSet.fromSVG(name, svg)
+            //   })
+            //   return iconSet.export()
+            // },
+            // @unocss-include
+            weather: FileSystemIconLoader('./src/assets/icons/weather', svg => svg.replace(/#fff/, 'currentColor')),
           },
         }),
       ],
