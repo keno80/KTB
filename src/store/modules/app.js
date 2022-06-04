@@ -4,7 +4,10 @@ const state = {
     ? localStorage.searchEngine
     : 'Google',
   searchUrl: '',
-  currentLocation: localStorage.currentLocation ? localStorage.currentLocation : '',
+  currentLocation: localStorage.currentLocation
+    ? localStorage.currentLocation
+    : '',
+  weather: localStorage.weather ? JSON.parse(localStorage.weather) : {},
 }
 
 const mutations = {
@@ -25,6 +28,10 @@ const mutations = {
     state.currentLocation = location
     localStorage.currentLocation = location
   },
+  setWeather(state, weather) {
+    state.weather = weather
+    localStorage.weather = JSON.stringify(weather)
+  },
 }
 
 const actions = {
@@ -37,6 +44,7 @@ const actions = {
 
   setCurrentLocation: ({ commit }, location) =>
     commit('setCurrentLocation', location),
+  setWeather: ({ commit }, weather) => commit('setWeather', weather),
 }
 
 export default {
