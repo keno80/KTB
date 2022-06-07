@@ -16,7 +16,47 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { onMounted, computed, reactive } from 'vue'
+import { useStore } from 'vuex'
+import api from '@/api/music'
+
+const store = useStore()
+
+const data = reactive({
+  trackIDs: computed(() => store.state.music.trackIDList),
+  index: computed(() => store.state.music.index),
+})
+
+// 获取排行榜
+const getToplist = () => {
+  api.getToplist().then((res) => {
+    const id = res.data.list[3].id
+    getPlaylistDetail(id)
+  })
+}
+
+// 获取歌单详情
+const getPlaylistDetail = (id) => {
+  api.getPlaylistDetail(id).then((res) => {
+    const trackIDList = res.data.playlist.trackIds
+    store.dispatch('music/setTracksIDist', trackIDList)
+    getSongDetail()
+  })
+}
+
+// 获取歌曲详情
+const getSongDetail = () => {
+  console.log(data.trackIDs[data.index])
+  // api.getSongDetail().then(res => {
+
+  // })
+}
+
+onMounted(() => {
+  getToplist()
+})
+</script>
 
 <style lang="scss" scoped>
 .player_box {
