@@ -78,7 +78,7 @@ const getWeather = () => {
 
   axios.get(weatherUrl).then((res) => {
     if (res.data.code === '200') {
-      res.data.now.icon = `i-weather-${res.data.now.icon}`
+      res.data.now.icon = `qi-${res.data.now.icon}`
       store.dispatch('app/setWeather', res.data.now)
       localStorage.weather = JSON.stringify(res.data.now)
       data.refresh_now = false
