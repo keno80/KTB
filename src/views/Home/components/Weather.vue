@@ -13,7 +13,7 @@
   <div class="misc">
     <div class="misc_style">
       <div class="misc_item">
-        <p>{{ data.weather.windScale }}</p>
+        <p>L{{ data.weather.windScale }}</p>
         <p>{{ data.weather.windDir }}</p>
       </div>
       <div class="misc_item">
@@ -105,6 +105,10 @@ onMounted(() => {
     width: 2em;
     height: 2em;
     margin-right: 10px;
+
+    &::before{
+      font-size: 2em;
+    }
   }
 
   p {
