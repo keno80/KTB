@@ -8,10 +8,7 @@
       /> -->
     </div>
     <div class="right">
-      <!-- <button
-        class="i-charm-sun dark:i-charm-moon svg"
-        @click="toggleDark()"
-      ></button> -->
+      <button class="i-mdi:toolbox-outline svg"></button>
     </div>
   </div>
 </template>
@@ -19,7 +16,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-import { toggleDark } from '@/composables'
+// import { toggleDark } from '@/composables'
 
 const store = useStore()
 const isCollapse = computed(() => store.state.app.isCollapse)
@@ -42,6 +39,7 @@ const toggleSideCollapse = () => {
 
   .svg {
     cursor: pointer;
+    color: #fff
   }
 }
 </style>
