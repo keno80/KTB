@@ -8,10 +8,10 @@
       /> -->
     </div>
     <div class="right">
-      <button
+      <!-- <button
         class="i-charm-sun dark:i-charm-moon svg"
         @click="toggleDark()"
-      ></button>
+      ></button> -->
     </div>
   </div>
 </template>
