@@ -168,6 +168,7 @@ onMounted(() => {
         padding: 10px 0;
         margin: 10px 0;
         border-radius: 14px;
+        position: relative;
       }
     }
   }

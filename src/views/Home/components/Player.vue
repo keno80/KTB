@@ -1,4 +1,5 @@
 <template>
+  <div class="block_progress" :style="{ width: data.progress + '%' }" />
   <div class="player_box">
     <div class="album">
       <img :src="data.nowPlaying.al.picUrl" v-if="data.nowPlaying.al" />
@@ -12,7 +13,10 @@
           {{ data.nowPlaying.artists ? data.nowPlaying.artists : 'Artists' }}
         </span>
       </div>
-      <div class="divider" />
+      <div class="volume_box">
+        <div class="divider" />
+        <!-- <div class="volume" :style="{ width: data.volume * 100 + '%' }" /> -->
+      </div>
       <div class="controll">
         <div class="i-mdi:skip-previous icon" @click="switchSongs(0)"></div>
         <div
@@ -47,6 +51,8 @@ const data = reactive({
   audioSrc: '',
   nowPlaying: {},
   paused: true,
+  progress: 0,
+  volume: 0.5,
 })
 
 // 播放
@@ -118,14 +124,36 @@ const getSongUrl = (id) => {
     setTimeout(() => {
       audio.value.play()
       data.paused = false
+      audioInit()
     }, 200)
   })
 }
 
-onMounted(() => {})
+const audioInit = () => {
+  audio.value.addEventListener('timeupdate', () => {
+    data.progress =
+      (audio.value.currentTime / audio.value.duration).toFixed(2) * 100
+  })
+
+  audio.value.addEventListener('ended', () => {
+    switchSongs(1)
+  })
+}
+
+onMounted(() => {
+  audio.value.volume = localStorage.volume ? localStorage.volume : data.volume
+})
 </script>
 
 <style lang="scss" scoped>
+.block_progress {
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .player_box {
   padding: 0 10px;
   display: flex;
@@ -161,9 +189,19 @@ onMounted(() => {})
       font-size: 0.8em;
     }
 
-    .divider {
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-      margin: 10px 0;
+    .volume_box {
+      position: relative;
+
+      .divider {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        margin: 10px 0;
+      }
+
+      .volume {
+        position: absolute;
+        border-top: 1px solid #fff;
+        top: 0;
+      }
     }
 
     .controll {
