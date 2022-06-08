@@ -86,14 +86,14 @@ const switchSongs = (type) => {
       case 0:
         // 如果当前为第一首则播放最后一首,如果不是,则播放上一首
         data.index === 0
-          ? store.dispatch('music/setIndex', data.tracks.length - 1)
-          : store.dispatch('music/setIndex', data.index - 1)
+          ? store.dispatch('music/setIndex', Number(data.tracks.length) - 1)
+          : store.dispatch('music/setIndex', Number(data.index) - 1)
         break
       case 1:
         // 如果当前为最后一首则播放第一首,如果不是,则播放下一首
         data.index === data.tracks.length - 1
           ? store.dispatch('music/setIndex', 0)
-          : store.dispatch('music/setIndex', data.index + 1)
+          : store.dispatch('music/setIndex', Number(data.index) + 1)
         break
     }
     data.nowPlaying = data.tracks[data.index]
