@@ -177,16 +177,27 @@ onMounted(() => {
     margin-left: 10px;
     flex: auto;
 
+    .song {
+      width: 120px;
+    }
+
     p {
       margin: 0 0;
       padding-left: 4px;
       font-size: 0.9em;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     span {
       padding-left: 4px;
       color: #e6e6e6;
       font-size: 0.8em;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: block;
     }
 
     .volume_box {
