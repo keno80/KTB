@@ -1,6 +1,6 @@
 const state = {
   tracksList: [], // 歌曲列表
-  index: 0, // 当前播放歌曲的 trackIDList 下标
+  index: localStorage.index ? localStorage.index : 0, // 当前播放歌曲的 trackIDList 下标
 }
 
 const mutations = {
@@ -9,6 +9,7 @@ const mutations = {
   },
   setIndex(state, index) {
     state.index = index
+    localStorage.index = index
   },
 }
 
