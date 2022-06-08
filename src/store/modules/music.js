@@ -1,20 +1,20 @@
 const state = {
-  trackIDList: [], // 歌曲列表
+  tracksList: [], // 歌曲列表
   index: 0, // 当前播放歌曲的 trackIDList 下标
 }
 
 const mutations = {
-  setTracksIDist(state, trackIDList) {
-    state.trackIDList = trackIDList
+  setTracksList(state, tracksList) {
+    state.tracksList = tracksList
   },
   setIndex(state, index) {
-    state.nowPlaying = index
+    state.index = index
   },
 }
 
 const actions = {
-  setTracksIDist({ commit }, trackIDList) {
-    commit('setTracksIDist', trackIDList)
+  setTracksList({ commit }, tracksList) {
+    commit('setTracksList', tracksList)
   },
   setIndex({ commit }, index) {
     commit('setIndex', index)

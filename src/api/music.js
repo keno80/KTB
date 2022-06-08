@@ -11,5 +11,8 @@ export default {
   },
   getSongDetail(id) {
     return axios.get(`${baseURL}/song/detail?ids=${id}`)
+  },
+  getSongUrl(id) {
+    return axios.get(`${baseURL}/song/url?id=${id}`)
   }
 }
