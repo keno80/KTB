@@ -96,11 +96,7 @@ const switchSongs = (type) => {
           : store.dispatch('music/setIndex', Number(data.index) + 1)
         break
     }
-    data.nowPlaying = data.tracks[data.index]
-    data.nowPlaying.artists = data.nowPlaying.ar
-      .map((item) => item.name)
-      .join('/')
-    getSongUrl(data.nowPlaying.id)
+    artistsCommon()
   }
 }
 
@@ -109,11 +105,7 @@ const getPlaylistDetail = (id) => {
   api.getPlaylistDetail(id).then((res) => {
     const tracksList = res.data.playlist.tracks
     store.dispatch('music/setTracksList', tracksList)
-    data.nowPlaying = data.tracks[data.index]
-    data.nowPlaying.artists = data.nowPlaying.ar
-      .map((item) => item.name)
-      .join('/')
-    getSongUrl(data.nowPlaying.id)
+    artistsCommon()
   })
 }
 
@@ -129,6 +121,16 @@ const getSongUrl = (id) => {
   })
 }
 
+// 歌手名称处理
+const artistsCommon = () => {
+  data.nowPlaying = data.tracks[data.index]
+  data.nowPlaying.artists = data.nowPlaying.ar
+    .map((item) => item.name)
+    .join('/')
+  getSongUrl(data.nowPlaying.id)
+}
+
+// 添加事件监听器
 const audioInit = () => {
   audio.value.addEventListener('timeupdate', () => {
     data.progress =
