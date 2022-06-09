@@ -7,7 +7,7 @@
     <div class="player">
       <div class="song">
         <p>
-          {{ data.nowPlaying.al ? data.nowPlaying.al.name : 'Song Name' }}
+          {{ data.nowPlaying.name ? data.nowPlaying.name : 'Song Name' }}
         </p>
         <span>
           {{ data.nowPlaying.artists ? data.nowPlaying.artists : 'Artists' }}
