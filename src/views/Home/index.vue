@@ -169,6 +169,7 @@ onMounted(() => {
         margin: 10px 0;
         border-radius: 14px;
         position: relative;
+        overflow: hidden;
       }
     }
   }
