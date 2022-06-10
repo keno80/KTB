@@ -7,17 +7,10 @@ import Home from '@/views/Home/index.vue'
 const routes = [
   {
     path: '/',
-    component: Layout,
-    redirect: '/home',
-    children: [
-      {
-        path: '/home',
-        name: 'Home',
-        component: Home,
-        meta: { title: '首页', icon: 'i-charm:home' },
-      },
-    ],
-  }
+    name: 'Home',
+    component: Home,
+    meta: { title: '首页', icon: 'i-charm:home' },
+  },
 ]
 
 const router = createRouter({

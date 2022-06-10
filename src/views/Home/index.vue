@@ -1,5 +1,11 @@
 <template>
   <div class="home">
+    <div class="header">
+      <div class="left"></div>
+      <div class="right">
+        <button class="i-mdi:toolbox-outline svg"></button>
+      </div>
+    </div>
     <div class="home_main">
       <div class="time">
         <p>
@@ -81,6 +87,19 @@ onMounted(() => {
 .home {
   height: 100%;
   width: 100%;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0 20px;
+
+    .svg {
+      cursor: pointer;
+      color: #fff;
+    }
+  }
 
   .home_main {
     position: absolute;
