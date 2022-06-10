@@ -1,6 +1,10 @@
 <template>
   <div class="header">
-    <div class="left"></div>
+    <div class="left">
+      <div class="item">
+        <span>KTB Tool Box </span>
+      </div>
+    </div>
     <div class="right">
       <div class="item">
         <button class="i-mdi:shape svg"></button>
@@ -36,6 +40,7 @@ const toggleSideCollapse = () => {
   padding: 0 20px;
   justify-content: space-between;
 
+  .left,
   .right {
     display: flex;
     align-items: center;
@@ -49,12 +54,25 @@ const toggleSideCollapse = () => {
       border: 1px solid transparent;
       cursor: pointer;
 
+      span {
+        color: #fff;
+      }
+
       &:hover {
         box-shadow: inset 0px 0px 6px 0px var(--c-text-color),
           0px 0px 6px 0 var(--c-text-color);
         border: 1px solid var(--c-border-color-6);
         transition: ease-in-out 0.2s;
       }
+    }
+  }
+
+  .left {
+    margin-left: 0;
+    margin-right: 8px;
+
+    .item {
+      border-radius: 10px;
     }
   }
 

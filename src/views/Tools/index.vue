@@ -1,7 +1,9 @@
 <template>
-  <el-button>测试</el-button>
+  <div></div>
 </template>
 
-<script setup></script>
+<script setup>
+
+</script>
 
 <style></style>

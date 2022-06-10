@@ -6,7 +6,7 @@ import Home from '@/views/Home/index.vue'
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'Home',
     component: Home,
     meta: { title: '首页', icon: 'i-charm:home' },
