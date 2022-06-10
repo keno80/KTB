@@ -3,7 +3,7 @@
     <div class="header">
       <div class="left"></div>
       <div class="right">
-        <button class="i-mdi:toolbox-outline svg"></button>
+        <button class="i-mdi:toolbox-outline svg" @click="toTools()"></button>
       </div>
     </div>
     <div class="home_main">
@@ -42,13 +42,14 @@
 import { reactive, onMounted, computed } from 'vue'
 import { timer } from '@/utils/tools'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 import SearchEngine from './components/SearchEngine.vue'
 import Favorite from './components/Favorite.vue'
 import Weather from './components/Weather.vue'
 import Player from './components/Player.vue'
 
 const store = useStore()
-
+const router = useRouter()
 const data = reactive({
   time: '',
   searchWord: '',
@@ -74,6 +75,10 @@ const handleSearch = () => {
 
 const handleClearWord = () => {
   data.searchWord = ''
+}
+
+const toTools = () => {
+  router.push('/tools')
 }
 
 onMounted(() => {

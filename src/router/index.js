@@ -6,10 +6,24 @@ import Home from '@/views/Home/index.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home,
     meta: { title: '首页', icon: 'i-charm:home' },
+  },
+  {
+    path: '/tools',
+    component: Layout,
+    redirect: '/tools',
+    meta: { title: '工具', icon: 'i-mdi:toolbox-outline' },
+    children: [
+      {
+        path: '/tools',
+        name: 'Tools',
+        component: () => import('@/views/Tools/index.vue'),
+        meta: { title: '工具', icon: 'i-mdi:toolbox-outline' },
+      },
+    ],
   },
 ]
 

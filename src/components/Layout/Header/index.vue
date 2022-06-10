@@ -8,7 +8,7 @@
       /> -->
     </div>
     <div class="right">
-      <button class="i-mdi:toolbox-outline svg"></button>
+      <button class="i-mdi:shape svg"></button>
     </div>
   </div>
 </template>
