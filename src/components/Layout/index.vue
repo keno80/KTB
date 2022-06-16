@@ -24,7 +24,7 @@ import Header from './Header/index.vue'
 
     .content {
       padding: 20px;
-      height: calc(100% - 100px);
+      height: calc(100% - 120px);
     }
   }
 }

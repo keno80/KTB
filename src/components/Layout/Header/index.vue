@@ -2,9 +2,9 @@
   <div class="header">
     <div class="left">
       <div class="left_item" v-if="mode === 'tools'">
-        <div class="item">
-          <button class="i-mdi:shape svg"></button>
-          <span class="item_text">前端技术</span>
+        <div class="item" v-for="item in nav" :key="item.name">
+          <button :class="item.icon" class="svg"></button>
+          <span class="item_text">{{item.name}}</span>
         </div>
       </div>
     </div>
@@ -31,6 +31,29 @@ const store = useStore()
 const isCollapse = computed(() => store.state.app.isCollapse)
 const mode = computed(() => store.state.app.mode)
 
+const nav = [
+  {
+    name: 'Documents',
+    icon: 'i-mdi:file-document',
+  },
+  {
+    name: 'UI Framework',
+    icon: 'i-mdi:palette',
+  },
+  {
+    name: 'JS Framework',
+    icon: 'i-mdi:language-javascript',
+  },
+  {
+    name: 'NodeJs',
+    icon: 'i-mdi:nodejs',
+  },
+    {
+    name: 'Plugins',
+    icon: 'i-mdi:toy-brick',
+  },
+]
+
 const toggleSideCollapse = () => {
   isCollapse.value
     ? store.commit('app/toggleSideCollapse', false)
@@ -54,8 +77,9 @@ const toTools = () => {
   // border-bottom: 1px solid var(--el-menu-border-color);
   display: flex;
   align-items: center;
-  padding: 0 20px;
+  padding: 10px 20px;
   justify-content: space-between;
+  font-family: 'Google Sans English';
 
   .left_item,
   .right {
@@ -64,7 +88,7 @@ const toTools = () => {
     justify-content: center;
 
     .item {
-      padding: 6px;
+      padding: 8px;
       background-color: var(--c-home-bg-color-2);
       border-radius: 50%;
       margin-left: 8px;
@@ -73,6 +97,7 @@ const toTools = () => {
 
       span {
         color: #fff;
+        margin-left: 6px;
       }
 
       &:hover {
@@ -89,24 +114,8 @@ const toTools = () => {
     margin-right: 8px;
 
     .item {
-      border-radius: 18px;
-      width: 20px;
-      transition: all ease-in-out 0.2s;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-
-      &:hover {
-        width: 88px;
-      }
-
-      &:hover .item_text {
-        display: inline-block;
-      }
-
-      .item_text {
-        display: none;
-      }
+      border-radius: 22px;
+      padding: 8px 18px;
     }
   }
 
