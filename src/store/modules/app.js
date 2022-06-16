@@ -1,13 +1,14 @@
 const state = {
-  isCollapse: false,
+  isCollapse: false, // 侧边栏
   searchEngine: localStorage.searchEngine
     ? localStorage.searchEngine
-    : 'Google',
-  searchUrl: '',
+    : 'Google', // 搜索引擎
+  searchUrl: '', // 搜索网址
   currentLocation: localStorage.currentLocation
     ? localStorage.currentLocation
-    : '',
-  weather: localStorage.weather ? JSON.parse(localStorage.weather) : {},
+    : '', // 当前定位
+  weather: localStorage.weather ? JSON.parse(localStorage.weather) : {}, // 天气信息
+  mode: 'search', // 展示模式 - 搜索页面/工具页面
 }
 
 const mutations = {
@@ -32,6 +33,9 @@ const mutations = {
     state.weather = weather
     localStorage.weather = JSON.stringify(weather)
   },
+  setMode(state, mode) {
+    state.mode = mode
+  },
 }
 
 const actions = {
@@ -45,6 +49,7 @@ const actions = {
   setCurrentLocation: ({ commit }, location) =>
     commit('setCurrentLocation', location),
   setWeather: ({ commit }, weather) => commit('setWeather', weather),
+  setMode: ({ commit }, mode) => commit('setMode', mode),
 }
 
 export default {
