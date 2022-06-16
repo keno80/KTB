@@ -8,13 +8,20 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    component: Layout,
     meta: { title: '首页', icon: 'i-charm:home' },
+    children: [
+      {
+        path: '/',
+        name: 'Home',
+        component: Home,
+        meta: { title: '首页', icon: 'i-charm:home' },
+      },
+    ],
   },
   {
     path: '/tools',
     component: Layout,
-    redirect: '/tools',
     meta: { title: '工具', icon: 'i-mdi:toolbox-outline' },
     children: [
       {
