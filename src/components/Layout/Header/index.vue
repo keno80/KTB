@@ -4,7 +4,7 @@
       <div class="left_item" v-if="mode === 'tools'">
         <div class="item" v-for="item in nav" :key="item.name">
           <button :class="item.icon" class="svg"></button>
-          <span class="item_text">{{item.name}}</span>
+          <span class="item_text">{{ item.name }}</span>
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@ const nav = [
     name: 'NodeJs',
     icon: 'i-mdi:nodejs',
   },
-    {
+  {
     name: 'Plugins',
     icon: 'i-mdi:toy-brick',
   },
@@ -111,11 +111,12 @@ const toTools = () => {
 
   .left_item {
     margin-left: 0;
-    margin-right: 8px;
+    margin-right: 10px;
 
     .item {
       border-radius: 22px;
       padding: 8px 18px;
+      margin: 0 10px 0 0;
     }
   }
 
