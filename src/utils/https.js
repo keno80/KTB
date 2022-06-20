@@ -1,9 +1,7 @@
 import axios from 'axios'
 
-const baseURL = ''
-
 const instance = axios.create({
-  baseURL,
+  baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 60000,
 })
 

@@ -43,6 +43,7 @@ import { reactive, onMounted, computed } from 'vue'
 import { timer } from '@/utils/tools'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import api from '@/api/tools'
 import SearchEngine from './components/SearchEngine.vue'
 import Favorite from './components/Favorite.vue'
 import Weather from './components/Weather.vue'
@@ -83,6 +84,9 @@ const toTools = () => {
 
 onMounted(() => {
   store.dispatch('app/setSearchUrl')
+  api.getCategory().then((res) => {
+    console.log(res)
+  })
 })
 
 // console.log(timer());
