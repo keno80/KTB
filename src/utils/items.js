@@ -423,6 +423,24 @@ export const list = [
         description: '一个现代和交互式开源图表库',
         url: 'https://apexcharts.com/',
       },
+      {
+        icon: 'https://alvarotrigo.com/fullPage/favicons/apple-touch-icon.png',
+        title: 'FullPage.js',
+        description: '帮助您轻松创建全屏滚动网站或一页网站',
+        url: 'https://alvarotrigo.com/fullPage/zh/',
+      },
+      {
+        icon: 'https://kushagra.dev/lab/hint/hint.png',
+        title: 'Hint.css',
+        description: '一款小巧的提示框插件',
+        url: 'https://kushagra.dev/lab/hint/',
+      },
+      {
+        icon: 'https://d33wubrfki0l68.cloudfront.net/2f6479d73bc25170dc532dd42e059166573bf478/61057/favicon.svg',
+        title: 'Vueuse',
+        description: 'VueUse 是一组基于 Composition API 的实用函数。',
+        url: 'https://vueuse.org/',
+      },
     ],
   },
 ]
