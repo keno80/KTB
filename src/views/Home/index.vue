@@ -25,14 +25,14 @@
       <SearchEngine :list="data.searchEngineList" />
       <div class="tool_box">
         <Favorite />
-        <div class="player_weather">
+        <!-- <div class="player_weather">
           <div class="item">
             <Weather />
           </div>
           <div class="item">
             <Player />
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -45,8 +45,8 @@ import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import SearchEngine from './components/SearchEngine.vue'
 import Favorite from './components/Favorite.vue'
-import Weather from './components/Weather.vue'
-import Player from './components/Player.vue'
+import Weather from '../../components/Layout/Header/Weather.vue'
+import Player from '../../components/Layout/Header/Player.vue'
 
 const store = useStore()
 const router = useRouter()

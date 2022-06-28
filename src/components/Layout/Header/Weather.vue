@@ -1,29 +1,9 @@
 <template>
-  <!-- <div class="position">
-    <div class="i-mdi:map-marker"></div>
-    <span>{{ data.city }}</span>
-  </div> -->
   <div class="weather">
     <div :class="data.weather.icon" class="icon"></div>
     <div class="weather_info">
       <p class="temp">{{ data.weather.temp }}°</p>
       <p class="text">{{ data.weather.text }}</p>
-    </div>
-  </div>
-  <div class="misc">
-    <div class="misc_style">
-      <div class="misc_item">
-        <p>L{{ data.weather.windScale }}</p>
-        <p>{{ data.weather.windDir }}</p>
-      </div>
-      <div class="misc_item">
-        <p>{{ data.weather.feelsLike }}°</p>
-        <p>体感温度</p>
-      </div>
-      <div class="misc_item">
-        <p>{{ data.weather.precip }}mm</p>
-        <p>降水量</p>
-      </div>
     </div>
   </div>
 </template>
@@ -95,19 +75,22 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .weather {
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Google Sans English';
-  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  border-radius: 14px;
 
   .icon {
-    width: 2em;
-    height: 2em;
+    width: 1.8em;
+    height: 1.8em;
     margin-right: 10px;
 
-    &::before{
-      font-size: 2em;
+    &::before {
+      font-size: 1.6em;
     }
   }
 
@@ -121,28 +104,6 @@ onMounted(() => {
 
   .text {
     font-size: 0.8em;
-  }
-}
-
-.misc {
-  font-family: 'Google Sans English';
-  display: flex;
-  justify-content: center;
-
-  .misc_style {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 10px;
-    width: 92%;
-    text-align: center;
-    padding: 2px 0;
-  }
-
-  p {
-    margin: 0;
-    font-size: 0.9em;
   }
 }
 </style>

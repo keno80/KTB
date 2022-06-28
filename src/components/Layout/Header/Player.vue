@@ -1,21 +1,18 @@
 <template>
-  <div class="block_progress" :style="{ width: data.progress + '%' }" />
   <div class="player_box">
     <div class="album">
       <img :src="data.nowPlaying.al.picUrl" v-if="data.nowPlaying.al" />
     </div>
     <div class="player">
       <div class="song">
-        <p>
-          {{ data.nowPlaying.name ? data.nowPlaying.name : 'Song Name' }}
-        </p>
         <span>
+          {{ data.nowPlaying.name ? data.nowPlaying.name : 'Song Name' }} -
           {{ data.nowPlaying.artists ? data.nowPlaying.artists : 'Artists' }}
         </span>
       </div>
-      <div class="volume_box">
-        <div class="divider" />
-        <!-- <div class="volume" :style="{ width: data.volume * 100 + '%' }" /> -->
+      <div class="progress_box">
+        <div class="bottom_line" />
+        <div class="progress_line" :style="{ width: data.progress + '%' }" />
       </div>
       <div class="controll">
         <div class="i-mdi:skip-previous icon" @click="switchSongs(0)"></div>
@@ -148,22 +145,15 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.block_progress {
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 14px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
 .player_box {
   padding: 0 10px;
   display: flex;
   font-family: 'Google Sans English';
+  // background-color: rgba(255, 255, 255, 0.2);
 
   .album {
-    width: 90px;
-    height: 90px;
+    width: 50px;
+    height: 50px;
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     border-radius: 10px;
@@ -181,6 +171,7 @@ onMounted(() => {
 
     .song {
       width: 120px;
+      padding-top: 3px;
     }
 
     p {
@@ -194,26 +185,30 @@ onMounted(() => {
 
     span {
       padding-left: 4px;
-      color: #e6e6e6;
+      color: #fff;
       font-size: 0.8em;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
-      display: block;
+      display: inline-block;
     }
 
-    .volume_box {
+    .progress_box {
       position: relative;
 
-      .divider {
+      .bottom_line {
+        position: absolute;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
-        margin: 10px 0;
+        top: 0;
+        left: 4px;
+        width: 100%;
       }
 
-      .volume {
+      .progress_line {
         position: absolute;
-        border-top: 1px solid #fff;
         top: 0;
+        left: 4px;
+        border-top: 1px solid rgba(255, 255, 255, 1);
       }
     }
 
@@ -221,11 +216,13 @@ onMounted(() => {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-top: 2px;
 
       .icon {
-        width: 1.8em;
-        height: 1.8em;
+        width: 1.6em;
+        height: 1.6em;
         cursor: pointer;
+        color: #fff;
       }
     }
   }
