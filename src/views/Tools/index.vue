@@ -18,6 +18,7 @@
           class="documents_item"
           v-for="item in list[currentCategory].items"
           :key="item.title"
+          @click="toPage(item)"
         >
           <div class="item_top">
             <img :src="item.icon" class="svg" />
@@ -56,6 +57,10 @@ const currentCategory = ref(0)
 const chooseCategory = (item) => {
   currentCategory.value = item.index
 }
+
+const toPage = (item) => {
+  window.open(item.url)
+}
 </script>
 
 <style lang="scss" scoped>
@@ -68,6 +73,7 @@ const chooseCategory = (item) => {
   .tools_content {
     display: flex;
     width: 1300px;
+    min-width: 1300px;
   }
 }
 
