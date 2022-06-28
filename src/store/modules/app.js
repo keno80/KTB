@@ -8,7 +8,7 @@ const state = {
     ? localStorage.currentLocation
     : '', // 当前定位
   weather: localStorage.weather ? JSON.parse(localStorage.weather) : {}, // 天气信息
-  mode: 'search', // 展示模式 - 搜索页面/工具页面
+  mode: sessionStorage.mode ? sessionStorage.mode : 'search', // 展示模式 - 搜索页面/工具页面
 }
 
 const mutations = {
@@ -35,6 +35,7 @@ const mutations = {
   },
   setMode(state, mode) {
     state.mode = mode
+    sessionStorage.mode = mode
   },
 }
 

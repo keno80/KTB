@@ -51,7 +51,7 @@ const nav = [
   },
 ]
 
-const currentCategory = ref(2)
+const currentCategory = ref(0)
 
 const chooseCategory = (item) => {
   currentCategory.value = item.index
