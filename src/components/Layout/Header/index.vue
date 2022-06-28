@@ -1,8 +1,10 @@
 <template>
   <div class="header">
     <div class="left">
+      <Player />
     </div>
     <div class="right">
+      <Weather />
       <div class="item" v-if="mode === 'tools'" @click="toHome">
         <button class="i-mdi:home svg"></button>
       </div>
@@ -17,6 +19,8 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import Weather from './Weather.vue'
+import Player from './Player.vue'
 // import { toggleDark } from '@/composables'
 
 const router = useRouter()
@@ -52,6 +56,12 @@ const toTools = () => {
   justify-content: space-between;
   font-family: 'Google Sans English';
 
+  .left {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
   .left_item,
   .right {
     display: flex;
@@ -59,10 +69,10 @@ const toTools = () => {
     justify-content: center;
 
     .item {
-      padding: 8px;
+      padding: 14px;
       background-color: var(--c-home-bg-color-2);
-      border-radius: 50%;
-      margin-left: 8px;
+      border-radius: 14px;
+      margin-left: 12px;
       border: 1px solid transparent;
       cursor: pointer;
 
@@ -83,6 +93,8 @@ const toTools = () => {
   .svg {
     cursor: pointer;
     color: #fff;
+    height: 1.8em;
+    width: 1.8em;
   }
 }
 </style>

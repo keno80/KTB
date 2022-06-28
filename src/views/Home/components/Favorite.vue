@@ -48,6 +48,10 @@ const favoriteList = [
     url: 'https://www.antdv.com/docs/vue/introduce-cn/',
   },
   { name: 'Vite', icon: 'i-simple-icons:vite', url: 'https://cn.vitejs.dev/' },
+  { name: 'Nuxt.js', icon: 'i-mdi:nuxt', url: 'https://www.nuxtjs.cn/' },
+  { name: 'Lodash', icon: 'i-simple-icons:lodash', url: 'https://www.lodashjs.com/' },
+  { name: 'Echarts', icon: 'i-simple-icons:apacheecharts', url: 'https://echarts.apache.org/zh/index.html' },
+  { name: 'Bootstrap', icon: 'i-mdi:bootstrap', url: 'https://www.bootcss.com/' },
 ]
 
 const handleClick = (url) => {
@@ -65,7 +69,6 @@ const handleClick = (url) => {
   justify-content: space-between;
   flex-wrap: wrap;
   font-family: 'Google Sans English';
-  width: 540px;
 
   &::after {
     content: '';
