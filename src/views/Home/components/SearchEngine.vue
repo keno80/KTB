@@ -5,7 +5,7 @@
       class="search_engine_item"
       v-for="item in props.list"
       :key="item.name"
-      @click="chooseEngine(item.name)"
+      @click="chooseEngine(item)"
     >
       <div :class="item.icon" class="engine-icon"></div>
       <span>{{ item.name }}</span>

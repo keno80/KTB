@@ -1,38 +1,21 @@
 <template>
   <div class="home">
-    <!-- <div class="header">
-      <div class="left"></div>
-      <div class="right">
-        <button class="i-mdi:toolbox-outline svg" @click="toTools()"></button>
-      </div>
-    </div> -->
     <div class="home_main">
       <div class="time">
-        <p>
-          <!-- {{ data.time ? data.time.toLocaleString() : '00:00:00' }} -->
-          KTB Search Page
-        </p>
+        <p>KTB Search Page</p>
       </div>
       <div class="search">
-        <div class="i-mdi:magnify inner-search"></div>
+        <div :class="data.icon" class="inner-search"></div>
         <input
           placeholder="Search what you want"
           @keyup.enter="handleSearch()"
           v-model="data.searchWord"
         />
-        <div class="i-mdi:close inner-close" @click="handleClearWord()"></div>
+        <div class="i-mdi:magnify inner-close" @click="handleSearch()"></div>
       </div>
       <SearchEngine :list="data.searchEngineList" />
       <div class="tool_box">
         <Favorite />
-        <!-- <div class="player_weather">
-          <div class="item">
-            <Weather />
-          </div>
-          <div class="item">
-            <Player />
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
@@ -45,8 +28,6 @@ import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import SearchEngine from './components/SearchEngine.vue'
 import Favorite from './components/Favorite.vue'
-import Weather from '../../components/Layout/Header/Weather.vue'
-import Player from '../../components/Layout/Header/Player.vue'
 
 const store = useStore()
 const router = useRouter()
@@ -61,6 +42,7 @@ const data = reactive({
     { name: 'Baidu', icon: 'i-bxl:baidu' },
   ],
   searchUrl: computed(() => store.state.app.searchUrl),
+  icon: computed(() => store.state.app.searchIcon)
 })
 
 setInterval(() => {
@@ -71,10 +53,6 @@ const handleSearch = () => {
   if (data.searchWord) {
     window.open(data.searchUrl + data.searchWord)
   }
-}
-
-const handleClearWord = () => {
-  data.searchWord = ''
 }
 
 const toTools = () => {

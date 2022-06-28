@@ -3,6 +3,9 @@ const state = {
   searchEngine: localStorage.searchEngine
     ? localStorage.searchEngine
     : 'Google', // 搜索引擎
+  searchIcon: localStorage.searchIcon
+    ? localStorage.searchIcon
+    : 'i-ant-design:google-outlined', // 搜索图标
   searchUrl: '', // 搜索网址
   currentLocation: localStorage.currentLocation
     ? localStorage.currentLocation
@@ -16,8 +19,10 @@ const mutations = {
     state.isCollapse = status
   },
   setSearchEngine(state, engine) {
-    state.searchEngine = engine
-    localStorage.searchEngine = engine
+    state.searchEngine = engine.name
+    state.searchIcon = engine.icon
+    localStorage.searchEngine = engine.name
+    localStorage.searchIcon = engine.icon
   },
   setSearchUrl(state) {
     state.searchUrl =
