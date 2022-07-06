@@ -18,8 +18,6 @@
         <Favorite />
       </div>
     </div>
-
-    <CloseModal @confirm="confirm" v-if="data.showModal"/>
   </div>
 </template>
 
@@ -30,7 +28,6 @@ import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import SearchEngine from './components/SearchEngine.vue'
 import Favorite from './components/Favorite.vue'
-import CloseModal from '@/components/CloseModal/index.vue'
 
 const store = useStore()
 const router = useRouter()
@@ -61,10 +58,6 @@ const handleSearch = () => {
 
 const toTools = () => {
   router.push('/tools')
-}
-
-const confirm = () => {
-  data.showModal = false
 }
 
 onMounted(() => {
