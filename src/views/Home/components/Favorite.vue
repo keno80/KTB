@@ -7,14 +7,30 @@
       @click="handleClick(item.url)"
     >
       <div>
+        <div class="i-mdi:close close" @click.stop="handleShowModal"></div>
         <div :class="item.icon" class="icon"></div>
         <div class="item_name">{{ item.name }}</div>
       </div>
     </div>
+
+    <CloseModal @confirm="confirm" v-if="showModal" />
   </div>
 </template>
 
 <script setup>
+import CloseModal from '@/components/CloseModal/index.vue'
+import { ref } from 'vue'
+
+const showModal = ref(false)
+
+const handleShowModal = () => {
+  showModal.value = true
+}
+
+const confirm = () => {
+  showModal.value = false
+}
+
 const favoriteList = [
   {
     name: 'Translate',
@@ -49,9 +65,21 @@ const favoriteList = [
   },
   { name: 'Vite', icon: 'i-simple-icons:vite', url: 'https://cn.vitejs.dev/' },
   { name: 'Nuxt.js', icon: 'i-mdi:nuxt', url: 'https://www.nuxtjs.cn/' },
-  { name: 'Lodash', icon: 'i-simple-icons:lodash', url: 'https://www.lodashjs.com/' },
-  { name: 'Echarts', icon: 'i-simple-icons:apacheecharts', url: 'https://echarts.apache.org/zh/index.html' },
-  { name: 'Bootstrap', icon: 'i-mdi:bootstrap', url: 'https://www.bootcss.com/' },
+  {
+    name: 'Lodash',
+    icon: 'i-simple-icons:lodash',
+    url: 'https://www.lodashjs.com/',
+  },
+  {
+    name: 'Echarts',
+    icon: 'i-simple-icons:apacheecharts',
+    url: 'https://echarts.apache.org/zh/index.html',
+  },
+  {
+    name: 'Bootstrap',
+    icon: 'i-mdi:bootstrap',
+    url: 'https://www.bootcss.com/',
+  },
 ]
 
 const handleClick = (url) => {
@@ -89,12 +117,27 @@ const handleClick = (url) => {
     text-align: center;
     padding: 12px 0 8px;
     cursor: pointer;
+    position: relative;
 
     &:hover {
       box-shadow: inset 0px 0px 6px 0px var(--c-text-color),
         0px 0px 6px 0 var(--c-text-color);
       border: 1px solid var(--c-border-color-6);
       transition: ease-in-out 0.2s;
+    }
+
+    &:hover .close {
+      display: block;
+    }
+
+    .close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 1.3em;
+      height: 1.3em;
+      cursor: pointer;
+      display: none;
     }
 
     .icon {
