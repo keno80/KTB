@@ -1,24 +1,26 @@
 <template>
-  <div class="modal">
-    <div class="modal_cover"></div>
-    <div class="modal_content">
-      <div class="modal_title">
-        <span>提示</span>
-      </div>
-      <div class="modal_body">
-        <div class="i-mdi:alert-box icon"></div>
-        <span>确定要删除这个快捷方式吗？</span>
-      </div>
-      <div class="modal_footer">
-        <div class="btn btn_cancel" @click="cancel">
-          <span>取消</span>
+  <teleport to="body">
+    <div class="modal">
+      <div class="modal_cover"></div>
+      <div class="modal_content">
+        <div class="modal_title">
+          <span>提示</span>
         </div>
-        <div class="btn btn_confirm" @click="confirm">
-          <span>确定</span>
+        <div class="modal_body">
+          <div class="i-mdi:alert-box icon"></div>
+          <span>确定要删除这个快捷方式吗？</span>
+        </div>
+        <div class="modal_footer">
+          <div class="btn btn_cancel" @click="cancel">
+            <span>取消</span>
+          </div>
+          <div class="btn btn_confirm" @click="confirm">
+            <span>确定</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </teleport>
 </template>
 
 <script setup>
