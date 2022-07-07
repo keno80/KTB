@@ -75,6 +75,7 @@ onMounted(() => {
   width: 100%;
   position: relative;
   top: -38px;
+  overflow: hidden;
 
   .home_main {
     position: absolute;
