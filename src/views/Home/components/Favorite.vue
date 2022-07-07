@@ -7,13 +7,13 @@
       @click="handleClick(item.url)"
     >
       <div>
-        <div class="i-mdi:close close" @click.stop="handleShowModal"></div>
+        <!-- <div class="i-mdi:close close" @click.stop="handleShowModal"></div> -->
         <div :class="item.icon" class="icon"></div>
         <div class="item_name">{{ item.name }}</div>
       </div>
     </div>
 
-    <CloseModal @confirm="confirm" v-if="showModal" />
+    <!-- <CloseModal @confirm="confirm" v-if="showModal" /> -->
   </div>
 </template>
 
@@ -126,19 +126,19 @@ const handleClick = (url) => {
       transition: ease-in-out 0.2s;
     }
 
-    &:hover .close {
-      display: block;
-    }
+    // &:hover .close {
+    //   display: block;
+    // }
 
-    .close {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      width: 1.3em;
-      height: 1.3em;
-      cursor: pointer;
-      display: none;
-    }
+    // .close {
+    //   position: absolute;
+    //   top: 8px;
+    //   right: 8px;
+    //   width: 1.3em;
+    //   height: 1.3em;
+    //   cursor: pointer;
+    //   display: none;
+    // }
 
     .icon {
       width: 100%;
