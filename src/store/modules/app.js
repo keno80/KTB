@@ -12,6 +12,7 @@ const state = {
     : '', // 当前定位
   weather: localStorage.weather ? JSON.parse(localStorage.weather) : {}, // 天气信息
   mode: sessionStorage.mode ? sessionStorage.mode : 'search', // 展示模式 - 搜索页面/工具页面
+  showWidgets: false,
 }
 
 const mutations = {
@@ -42,6 +43,9 @@ const mutations = {
     state.mode = mode
     sessionStorage.mode = mode
   },
+  setWidgets(state) {
+    state.showWidgets = !state.showWidgets
+  },
 }
 
 const actions = {
@@ -56,6 +60,7 @@ const actions = {
     commit('setCurrentLocation', location),
   setWeather: ({ commit }, weather) => commit('setWeather', weather),
   setMode: ({ commit }, mode) => commit('setMode', mode),
+  setWidgets: ({ commit }) => commit('setWidgets'),
 }
 
 export default {
