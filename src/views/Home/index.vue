@@ -18,6 +18,7 @@
         <Favorite />
       </div>
     </div>
+    <Widgets />
   </div>
 </template>
 
@@ -28,6 +29,7 @@ import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import SearchEngine from './components/SearchEngine.vue'
 import Favorite from './components/Favorite.vue'
+import Widgets from '@/components/Widgets/index.vue'
 
 const store = useStore()
 const router = useRouter()
@@ -43,7 +45,7 @@ const data = reactive({
   ],
   searchUrl: computed(() => store.state.app.searchUrl),
   icon: computed(() => store.state.app.searchIcon),
-  showModal: true
+  showModal: true,
 })
 
 setInterval(() => {
@@ -71,6 +73,8 @@ onMounted(() => {
 .home {
   height: 100%;
   width: 100%;
+  position: relative;
+  top: -38px;
 
   .home_main {
     position: absolute;
