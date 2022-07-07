@@ -1,5 +1,5 @@
 <template>
-  <div class="widgets_main">
+  <div class="widgets_main" :class="[data.showWidget ? 'show' : 'hide']">
     <div class="widgets_header">
       <div
         class="widgets_header_item"
@@ -17,7 +17,10 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
+import { useStore } from 'vuex'
+
+const store = useStore()
 
 const headerItem = [
   {
@@ -39,6 +42,7 @@ const headerItem = [
 
 const data = reactive({
   nowActive: 1,
+  showWidget: computed(() => store.state.app.showWidgets),
 })
 
 const handleChangeActive = (id) => {
@@ -49,11 +53,19 @@ const handleChangeActive = (id) => {
 <style lang="scss" scoped>
 .widgets_main {
   position: absolute;
-  right: 0;
   top: 40px;
   width: 400px;
   color: #fff;
   font-family: 'Google Sans English';
+  transition: all 0.4s;
+}
+
+.show {
+  right: 0px;
+}
+
+.hide {
+  right: -400px;
 }
 
 .widgets_header {
@@ -83,7 +95,7 @@ const handleChangeActive = (id) => {
 
   .active {
     background: rgba(255, 255, 255, 0.3);
-    transition: all ease-in-out .3s;
+    transition: all ease-in-out 0.3s;
   }
 }
 

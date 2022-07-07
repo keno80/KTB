@@ -8,9 +8,14 @@
       <div class="item" v-if="mode === 'tools'" @click="toHome">
         <button class="i-mdi:home svg"></button>
       </div>
-      <div class="item" v-else @click="toTools">
-        <button class="i-mdi:shape svg"></button>
-      </div>
+      <template v-else>
+        <div class="item" @click="showWidgets">
+          <button class="i-mdi:star-four-points svg"></button>
+        </div>
+        <div class="item" @click="toTools">
+          <button class="i-mdi:shape svg"></button>
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -43,6 +48,10 @@ const toHome = () => {
 const toTools = () => {
   router.push('/tools')
   store.dispatch('app/setMode', 'tools')
+}
+
+const showWidgets = () => {
+  store.dispatch('app/setWidgets')
 }
 </script>
 
