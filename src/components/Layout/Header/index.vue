@@ -63,7 +63,7 @@ const showWidgets = () => {
   align-items: center;
   padding: 10px 20px;
   justify-content: space-between;
-  font-family: 'Google Sans English';
+  font-family: 'Google Sans Regular';
 
   .left {
     display: flex;

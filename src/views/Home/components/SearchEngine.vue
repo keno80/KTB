@@ -38,7 +38,7 @@ const chooseEngine = (name) => {
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
-  font-family: 'Google Sans English';
+  font-family: 'Google Sans Regular';
 
   .search_engine_item {
     background-color: var(--c-home-bg-color-2);

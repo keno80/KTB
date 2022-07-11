@@ -96,7 +96,7 @@ const handleClick = (url) => {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  font-family: 'Google Sans English';
+  font-family: 'Google Sans Regular';
 
   &::after {
     content: '';

@@ -87,7 +87,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Google Sans English';
+  font-family: 'Google Sans Regular';
   background-color: rgba(255, 255, 255, 0.2);
   padding: 8px;
   border-radius: 14px;
@@ -112,6 +112,7 @@ onMounted(() => {
 
   .text {
     font-size: 0.8em;
+    font-family: 'PF SC';
   }
 }
 </style>

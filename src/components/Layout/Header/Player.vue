@@ -148,7 +148,7 @@ onMounted(() => {
 .player_box {
   padding: 0 10px;
   display: flex;
-  font-family: 'Google Sans English';
+  font-family: 'Google Sans Regular';
   // background-color: rgba(255, 255, 255, 0.2);
 
   .album {

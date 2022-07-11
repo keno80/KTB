@@ -113,7 +113,7 @@ const toPage = (item) => {
 }
 .documents {
   display: flex;
-  font-family: 'Google Sans English';
+  font-family: 'Google Sans Regular';
   justify-content: space-between;
   flex-wrap: wrap;
 

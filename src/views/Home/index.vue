@@ -87,7 +87,7 @@ onMounted(() => {
   }
 
   .time {
-    font-family: 'Google Sans English';
+    font-family: 'Google Sans Medium';
     width: 100%;
     display: flex;
     justify-content: center;
@@ -125,7 +125,7 @@ onMounted(() => {
       padding-inline-start: 50px;
       padding-inline-end: 50px;
       font-size: 1.1rem;
-      font-family: 'Google Sans English';
+      font-family: 'Google Sans Regular';
       background-color: var(--c-home-bg-color-2);
       backdrop-filter: blur(5px);
       color: #fff;

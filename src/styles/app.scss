@@ -1,4 +1,15 @@
 @font-face {
-  font-family: 'Google Sans English';
-  src: url('../assets//fonts/GoogleSansEn.ttf');
+  font-family: 'Google Sans Medium';
+  src: url('../assets//fonts/GoogleSansMedium.ttf');
+}
+
+@font-face {
+  font-family: 'Google Sans Regular';
+  src: url('../assets//fonts/GoogleSansRegular.ttf');
+}
+
+@font-face {
+  font-family: "PF SC";
+  src: url("//db.onlinewebfonts.com/t/05e476e067ffef74ca5686f229c40a63.eot");
+  src: url("//db.onlinewebfonts.com/t/05e476e067ffef74ca5686f229c40a63.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/05e476e067ffef74ca5686f229c40a63.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/05e476e067ffef74ca5686f229c40a63.woff") format("woff"), url("//db.onlinewebfonts.com/t/05e476e067ffef74ca5686f229c40a63.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/05e476e067ffef74ca5686f229c40a63.svg#PingFang SC") format("svg");
 }
