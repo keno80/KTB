@@ -12,13 +12,16 @@
         <span>{{ item.name }}</span>
       </div>
     </div>
-    <div class="widgets_body"></div>
+    <div class="widgets_body">
+      <Settings />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { reactive, computed } from 'vue'
 import { useStore } from 'vuex'
+import Settings from './Settings.vue'
 
 const store = useStore()
 
@@ -41,7 +44,7 @@ const headerItem = [
 ]
 
 const data = reactive({
-  nowActive: 1,
+  nowActive: 3,
   showWidget: computed(() => store.state.app.showWidgets),
 })
 
@@ -56,7 +59,7 @@ const handleChangeActive = (id) => {
   top: 40px;
   width: 400px;
   color: #fff;
-  font-family: 'Google Sans English';
+  font-family: 'Google Sans Regular';
   transition: all 0.4s;
 }
 
@@ -101,8 +104,9 @@ const handleChangeActive = (id) => {
 
 .widgets_body {
   background: rgba(255, 255, 255, 0.2);
-  height: 740px;
+  height: 720px;
   border-radius: 14px;
   margin-top: 20px;
+  padding: 14px;
 }
 </style>
