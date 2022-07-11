@@ -13,6 +13,7 @@ import { reactive, onMounted } from 'vue'
 import axios from 'axios'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
+import api from '@/api/tools'
 
 const store = useStore()
 
@@ -23,8 +24,9 @@ const data = reactive({
   refresh_now: false, // 立即刷新天气
 })
 
-const key = 'f769a71457c54fe686bd0c8abf9d0174'
-const cityInfoUrl = `https://geoapi.qweather.com/v2/city/lookup?key=${key}&location=东坡&adm=四川`
+const Qkey = 'f769a71457c54fe686bd0c8abf9d0174'
+const Akey = 'e8d86b9947e646f6c6bd42388fa37753'
+const cityInfoUrl = `https://geoapi.qweather.com/v2/city/lookup?key=${Qkey}&location=东坡&adm=四川`
 
 // 获取天气信息
 const fetchWeatherInfo = () => {
@@ -41,22 +43,28 @@ const fetchWeatherInfo = () => {
 
 // 获取当前区域地理位置信息
 const getLocation = () => {
-  axios.get(cityInfoUrl).then((res) => {
-    if (res.data.code === '200') {
-      localStorage.city = res.data.location[0].adm2
-      const location = res.data.location[0].lon + ',' + res.data.location[0].lat
-      store.dispatch('app/setCurrentLocation', location)
-      data.refresh_now = true
-      getWeather()
+  // 调用高德地图API获取位置信息
+  api.getAmapIp({ key: Akey }).then((res) => {
+    if (res.data.status == 1) {
+      api
+        .getQweatherCity({ key: Qkey, location: res.data.adcode })
+        .then((res) => {
+          if (res.data.code === '200') {
+            localStorage.city = res.data.location[0].adm2
+            const location =
+              res.data.location[0].lon + ',' + res.data.location[0].lat
+            store.dispatch('app/setCurrentLocation', location)
+            data.refresh_now = true
+            getWeather()
+          }
+        })
     }
   })
 }
 
 const getWeather = () => {
   // 利用获取到的地理信息请求天气信息
-  const weatherUrl = `https://devapi.qweather.com/v7/weather/now?key=${key}&location=${data.location}`
-
-  axios.get(weatherUrl).then((res) => {
+  api.getQweather({ key: Qkey, location: data.location }).then((res) => {
     if (res.data.code === '200') {
       res.data.now.icon = `qi-${res.data.now.icon}`
       store.dispatch('app/setWeather', res.data.now)
